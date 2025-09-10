@@ -24,7 +24,8 @@ if (Platform.OS === 'web') {
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    ClashGrotesk: require('../assets/fonts/ClashGrotesk-Regular.ttf'),
+     ClashGrotesk: require('../assets/fonts/ClashGrotesk-Regular.ttf'),
+  ClashGroteskBold: require('../assets/fonts/ClashGrotesk-Bold.ttf'),
   });
 
   useEffect(() => {
