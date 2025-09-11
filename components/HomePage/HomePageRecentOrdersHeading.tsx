@@ -25,7 +25,7 @@ export default function HomePageRecentOrdersHeading({ onSeeAll }: Props) {
 
 const styles = StyleSheet.create({
   rowBetween: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  sectionTitle: { fontSize: 18, color: DARK, marginBottom: 12, fontFamily: 'ClashGrotesk' },
+  sectionTitle: { fontSize: 18, color: DARK, marginBottom: 12, fontWeight: '700', fontFamily: 'ClashGrotesk' },
 
   // pill button container
   seeAllBtn: {

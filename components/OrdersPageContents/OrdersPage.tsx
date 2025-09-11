@@ -1,15 +1,15 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { Fragment } from 'react';
+import OrdersPageHeadingSection from './OrdersPageHeadingSection';
+import OrdersPageOrdersOptionsSection from './OrdersPageOrdersOptionsSection';
 
-export default function OrdersPage() {
+type Props = { bottomSpacer?: number };
+
+export default function OrdersPage({ bottomSpacer = 8 }: Props) {
+  // Designed to live inside the HomePage ScrollView
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Contents for Orders</Text>
-    </View>
+    <Fragment>
+      <OrdersPageHeadingSection />
+      <OrdersPageOrdersOptionsSection bottomSpacer={bottomSpacer} />
+    </Fragment>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { paddingVertical: 40, alignItems: 'center' },
-  text: { fontFamily: 'ClashGrotesk', fontSize: 18, color: '#0F172B' },
-});

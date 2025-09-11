@@ -16,7 +16,7 @@ export default function HomePageProductOptions({ onSheinPress }: Props) {
         <Pressable
           style={styles.storeItem}
           onPress={onSheinPress}
-          android_ripple={{ color: 'rgba(0,0,0,0.05)', borderless: false }}
+        
         >
           <View style={styles.storeIconWrap}>
             <Image source={require('../../assets/images/Shein.png')} style={styles.storeIcon} contentFit="contain" />
@@ -51,7 +51,7 @@ export default function HomePageProductOptions({ onSheinPress }: Props) {
 }
 
 const styles = StyleSheet.create({
-  sectionTitle: { fontSize: 18, color: DARK, marginBottom: 12, fontFamily: 'ClashGrotesk' },
+  sectionTitle: { fontSize: 18, color: DARK, marginBottom: 12, fontWeight: '700', fontFamily: 'ClashGrotesk' },
   storeRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 16 },
   storeItem: { alignItems: 'center', width: '23%' },
   storeIconWrap: {
@@ -59,5 +59,5 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center', marginBottom: 8,
   },
   storeIcon: { width: 36, height: 36 },
-  storeLabel: { fontSize: 14, color: DARK, fontFamily: 'ClashGrotesk' },
+  storeLabel: { fontSize: 14, color: DARK, fontWeight: '700', fontFamily: 'ClashGrotesk' },
 });

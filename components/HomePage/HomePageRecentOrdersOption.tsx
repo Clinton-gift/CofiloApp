@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
   orderLeft: { flexDirection: 'row', alignItems: 'center', gap: 12 },
   orderAvatar: { width: 44, height: 44, borderRadius: 12, backgroundColor: '#FFFFFF', alignItems: 'center', justifyContent: 'center' },
   avatarIcon: { width: 22, height: 22 },
-  orderBrand: { color: DARK, fontSize: 16, fontFamily: 'ClashGrotesk' },
-  orderTime: { color: MUTED, fontSize: 12, fontFamily: 'ClashGrotesk', marginTop: 2 },
+  orderBrand: { color: DARK, fontSize: 16, fontWeight: '700', fontFamily: 'ClashGrotesk' },
+  orderTime: { color: MUTED, fontSize: 12, fontWeight: '700', fontFamily: 'ClashGrotesk', marginTop: 2 },
   orderRight: { alignItems: 'flex-end' },
-  orderAmount: { color: DARK, fontSize: 16, fontFamily: 'ClashGrotesk' },
-  orderStatus: { color: SUCCESS, fontSize: 12, fontFamily: 'ClashGrotesk', marginTop: 2 },
+  orderAmount: { color: DARK, fontSize: 16, fontWeight: '700', fontFamily: 'ClashGrotesk' },
+  orderStatus: { color: SUCCESS, fontSize: 12, fontWeight: '700', fontFamily: 'ClashGrotesk', marginTop: 2 },
 });

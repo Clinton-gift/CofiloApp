@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     fontFamily: 'ClashGrotesk',
     marginTop: 8,
     marginBottom: 10,
-    fontWeight: '500',
+    fontWeight: '700',
   },
 
   grid: {
@@ -66,13 +66,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 8,
   },
-  tileIcon: { width: 32, height: 32 },
+  tileIcon: { width: 34, height: 34 },
 
   tileLabelDimmed: {
     fontSize: 12,
-    color: '#6B7280',
     fontFamily: 'ClashGrotesk',
     textAlign: 'center',
-    fontWeight: '500',
+    fontWeight: '700',
   },
 });
