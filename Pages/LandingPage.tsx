@@ -11,7 +11,7 @@ const BLUE = '#2B7FFF';
 
 export default function LandingPage() {
   const router = useRouter();
-  const goToSecond = () => router.push('/second' as const);
+  const goToSecond = () => router.push('/home' as const);
 
   return (
     <SafeAreaView style={styles.container}>

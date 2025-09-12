@@ -7,10 +7,13 @@ import StoresPageComingSoonSection from './StoresPageComingSoonSection';
 
 const BG = '#F8FAFC';
 
-export default function StoresPage() {
+type Props = { embedded?: boolean };
+
+export default function StoresPage({ embedded = false }: Props) {
   return (
     <View>
-      <StoresPageHeadingSection />
+      {/* Only render the header when NOT embedded */}
+      {!embedded && <StoresPageHeadingSection />}
 
       {/* full-bleed #F8FAFC content area */}
       <View style={styles.content}>

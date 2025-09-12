@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Image } from 'expo-image';
 
-const DARK = '#0F172B';
+const DARK = '#314158';
 const TILE = 60;
 const R = 16;
 
@@ -35,7 +35,6 @@ export default function StoresPageComingSoonSection() {
 const styles = StyleSheet.create({
   coming: {
     fontSize: 16,
-    color: DARK,
     fontFamily: 'ClashGrotesk',
     marginTop: 8,
     marginBottom: 10,
@@ -73,5 +72,6 @@ const styles = StyleSheet.create({
     fontFamily: 'ClashGrotesk',
     textAlign: 'center',
     fontWeight: '700',
+    color: DARK,
   },
 });
