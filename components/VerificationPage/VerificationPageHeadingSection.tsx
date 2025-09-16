@@ -13,7 +13,6 @@ type Props = {
 const BG = "#F8FAFC";
 const WHITE = "#FFFFFF";
 const DARK = "#0F172B";
-const BORDER = "#FFFFFF";
 const BACK_SIZE = 56;
 
 export default function VerificationPageHeadingSection({ insets, router, phoneDisplay }: Props) {
@@ -21,7 +20,10 @@ export default function VerificationPageHeadingSection({ insets, router, phoneDi
     <>
       <View style={[styles.header, { paddingTop: insets.top + 16, paddingBottom: 8 }]}>
         <TouchableOpacity style={styles.backBtn} activeOpacity={0.7} onPress={() => router.back()}>
-          <Image source={require("../../assets/images/backarrow.png")} style={{ width: 22, height: 22, tintColor: DARK }} />
+          <Image
+            source={require("../../assets/images/backarrow.png")}
+            style={{ width: 22, height: 22, tintColor: DARK }}
+          />
         </TouchableOpacity>
       </View>
 
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
     borderRadius: BACK_SIZE / 2,
     backgroundColor: WHITE,
     borderWidth: 1,
-    borderColor: BORDER,
+    borderColor: WHITE,
     alignItems: "center",
     justifyContent: "center",
   },

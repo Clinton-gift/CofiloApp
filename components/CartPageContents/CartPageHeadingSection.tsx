@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable, Platform } from 'react-native';
 import { Image } from 'expo-image';
+import { useRouter } from 'expo-router';
 
 const WHITE = '#FFFFFF';
 const DARK = '#0F172B';
@@ -12,8 +13,6 @@ const BACK_SIZE = 44;
 
 type Props = {
   topInset: number;
-  onBack?: () => void;
-  /** Optional overrides to fine-tune like Amazon header */
   headerHeight?: number;
   titleTopOffset?: number;
   buttonTopOffset?: number;
@@ -21,18 +20,18 @@ type Props = {
 
 export default function CartPageHeadingSection({
   topInset,
-  onBack,
   headerHeight = DEFAULT_HEADER_H,
   titleTopOffset = 0,
   buttonTopOffset = 0,
 }: Props) {
+  const router = useRouter();
   const backTop = (headerHeight - BACK_SIZE) / 2 + buttonTopOffset;
 
   return (
     <View style={[styles.headerBar, { paddingTop: topInset }]}>
       <View style={[styles.headerInner, { height: headerHeight }]}>
         <Pressable
-          onPress={onBack}
+          onPress={() => router.replace('/amazon')} // go to AmazonPage
           style={[styles.backBtn, { top: backTop }]}
           android_ripple={{ color: 'rgba(0,0,0,0.06)', borderless: true }}
         >
@@ -43,7 +42,9 @@ export default function CartPageHeadingSection({
           />
         </Pressable>
 
-        <Text style={[styles.headerTitle, { marginTop: titleTopOffset }]}>Cart</Text>
+        <Text style={[styles.headerTitle, { marginTop: titleTopOffset }]}>
+          Cart
+        </Text>
       </View>
     </View>
   );
@@ -57,7 +58,12 @@ const styles = StyleSheet.create({
     zIndex: 10,
     ...(Platform.OS === 'android'
       ? { elevation: 2 }
-      : { shadowColor: '#000', shadowOpacity: 0.04, shadowRadius: 4, shadowOffset: { width: 0, height: 2 } }),
+      : {
+          shadowColor: '#000',
+          shadowOpacity: 0.04,
+          shadowRadius: 4,
+          shadowOffset: { width: 0, height: 2 },
+        }),
   },
   headerInner: {
     alignItems: 'center',
@@ -65,14 +71,14 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontFamily: 'ClashGrotesk',
-    fontSize: 22,            // same as Amazon
+    fontSize: 22, // same as Amazon
     color: DARK,
     fontWeight: '700',
   },
   backBtn: {
     position: 'absolute',
     left: 16,
-    width: BACK_SIZE,        // 44 like Amazon close button
+    width: BACK_SIZE, // 44 like Amazon close button
     height: BACK_SIZE,
     borderRadius: BACK_SIZE / 2,
     backgroundColor: '#F2F4F7',

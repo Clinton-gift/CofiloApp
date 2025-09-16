@@ -53,6 +53,7 @@ export default function CartPagePaySection({
         onLogin={() => setShowPopup(false)}
       />
     </View>
+    
   );
 }
 

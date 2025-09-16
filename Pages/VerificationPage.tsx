@@ -1,9 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { View, StyleSheet, Platform, Keyboard, ScrollView } from "react-native";
+import { View, StyleSheet, Platform, Keyboard, ScrollView, TextInput } from "react-native";
 import { useRouter, useLocalSearchParams } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { TextInput } from "react-native";
-
 
 import VerificationPageHeadingSection from "../components/VerificationPage/VerificationPageHeadingSection";
 import VerificationPageCodeSection from "../components/VerificationPage/VerificationPageCodeSection";
@@ -30,7 +28,7 @@ export default function VerificationPage() {
 
   const [code, setCode] = useState(["", "", "", "", "", ""]);
   const [showError, setShowError] = useState(false);
-  const inputsRef = useRef([]);
+  const inputsRef = useRef<(TextInput | null)[]>([]);
 
   const [seconds, setSeconds] = useState(START_SECONDS);
   const [kbHeight, setKbHeight] = useState(0);
@@ -56,8 +54,17 @@ export default function VerificationPage() {
   const verifyDisabled = codeStr.length !== 6;
 
   const onVerify = () => {
-    if (verifyDisabled) { setShowError(true); return; }
-    router.back();
+    if (verifyDisabled) {
+      setShowError(true);
+      return;
+    }
+
+    // Navigate to CartPage and trigger popup
+    router.push({
+  pathname: "/cart",
+  params: { showPopup: "true" },
+});
+
   };
 
   const resend = () => {
@@ -65,13 +72,15 @@ export default function VerificationPage() {
     setSeconds(START_SECONDS);
     setCode(["", "", "", "", "", ""]);
     setShowError(false);
-   const inputsRef = useRef<(TextInput | null)[]>([]);
-
   };
 
   return (
     <View style={{ flex: 1, backgroundColor: BG }}>
-      <VerificationPageHeadingSection insets={insets} router={router} phoneDisplay={phoneDisplay} />
+      <VerificationPageHeadingSection
+        insets={insets}
+        router={router}
+        phoneDisplay={phoneDisplay}
+      />
 
       <ScrollView
         style={{ flex: 1 }}

@@ -1,22 +1,20 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StyleSheet, ScrollView } from 'react-native';
-import { useRouter } from 'expo-router';
-
+import { useRouter, useLocalSearchParams } from 'expo-router';
 
 import CartPageHeadingSection from '../components/CartPageContents/CartPageHeadingSection';
 import CartPageProductDetailsSection from '../components/CartPageContents/CartPageProductDetailsSection';
 import CartPagePaySection from '../components/CartPageContents/CartPagePaySection';
+import CartCheckOutPopUpPage from '../components/CartPageContents/CartCheckOutPopUpPage';
 
 const BG = '#F8FAFC';
-const WHITE = '#FFFFFF';
-const DARK = '#0F172B';
 
 export default function CartPage() {
   const router = useRouter();
   const insets = useSafeAreaInsets();
+  const { showPopup } = useLocalSearchParams<{ showPopup?: string }>();
 
-  // quantity & pricing (unchanged behavior)
   const [qty, setQty] = useState(1);
   const UNIT_PRICE = 12000;
   const SERVICE_FEE = 1200;
@@ -28,15 +26,21 @@ export default function CartPage() {
   const inc = () => setQty(q => q + 1);
   const dec = () => setQty(q => Math.max(1, q - 1));
 
+  const [popupVisible, setPopupVisible] = useState(false);
+
+  useEffect(() => {
+    if (showPopup === 'true') {
+      setPopupVisible(true);
+    }
+  }, [showPopup]);
+
   return (
     <SafeAreaView style={styles.safe}>
       {/* Header */}
-      <CartPageHeadingSection
-        topInset={insets.top}
-        onBack={() => router.back()}
-      />
+      <CartPageHeadingSection topInset={insets.top} />
 
-      {/* Scrollable content (leave space for bottom panel) */}
+
+      {/* Scrollable content */}
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 20, paddingTop: 16, paddingBottom: insets.bottom + 220 }}
         showsVerticalScrollIndicator={false}
@@ -52,13 +56,20 @@ export default function CartPage() {
         />
       </ScrollView>
 
-      {/* Bottom summary + CTA (fixed) */}
+      {/* Bottom summary + CTA */}
       <CartPagePaySection
         bottomInset={insets.bottom}
         serviceFeeLabel={fcfa(SERVICE_FEE)}
         subTotalLabel={fcfa(subTotal)}
         totalLabel={fcfa(total)}
         onCheckout={() => {}}
+      />
+
+      {/* Checkout popup */}
+      <CartCheckOutPopUpPage
+        visible={popupVisible}
+        onClose={() => setPopupVisible(false)}
+        totalLabel={fcfa(total)}
       />
     </SafeAreaView>
   );

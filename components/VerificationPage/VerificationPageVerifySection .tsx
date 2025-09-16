@@ -15,18 +15,11 @@ const BG = "#F8FAFC";
 const BLUE = "#2B7FFF";
 const PLACEHOLDER = "#A3AEC2";
 
-export default function VerificationPageVerifySection({
-  kbHeight,
-  insets,
-  canResend,
-  resend,
-  verifyDisabled,
-  onVerify,
-}: Props) {
+export default function VerificationPageVerifySection({ kbHeight, insets, canResend, resend, verifyDisabled, onVerify }: Props) {
   return (
     <View
       pointerEvents="box-none"
-      style={[styles.footerDock, { paddingBottom: (kbHeight || insets.bottom) + 12 }]}
+      style={[styles.footerDock, { paddingBottom: (kbHeight || insets.bottom) + 52 }]}
     >
       <Pressable hitSlop={6} onPress={canResend ? resend : undefined}>
         <Text style={[styles.resendBottom, canResend ? styles.link : styles.resendDisabled]}>

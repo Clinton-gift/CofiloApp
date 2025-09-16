@@ -19,16 +19,10 @@ const RED = "#EF4444";
 const CELL_SIDE = 56;
 const CELL_R = 16;
 
-export default function VerificationPageCodeSection({
-  code,
-  setCode,
-  showError,
-  inputsRef,
-  formatted,
-}: Props) {
+export default function VerificationPageCodeSection({ code, setCode, showError, inputsRef, formatted }: Props) {
   const setDigit = (idx: number, val: string) => {
     const only = val.replace(/\D/g, "");
-    setCode((prev: string[]) => {
+    setCode(prev => {
       const next = [...prev];
       if (only.length <= 1) {
         next[idx] = only;
@@ -47,7 +41,7 @@ export default function VerificationPageCodeSection({
 
   const onKeyPress = (idx: number, key: string) => {
     if (key === "Backspace") {
-      setCode((prev: string[]) => {
+      setCode(prev => {
         const next = [...prev];
         if (next[idx]) {
           next[idx] = "";
@@ -55,6 +49,7 @@ export default function VerificationPageCodeSection({
         }
         const prevIndex = Math.max(0, idx - 1);
         inputsRef.current[prevIndex]?.focus();
+        next[prevIndex] = "";
         next[prevIndex] = "";
         return next;
       });
@@ -64,14 +59,12 @@ export default function VerificationPageCodeSection({
   return (
     <>
       <View style={styles.cellsRow}>
-        {code.map((v: string, i: number) => {
+        {code.map((v, i) => {
           const hasError = showError && !v;
           return (
             <TextInput
               key={i}
-              ref={(r) => {
-                inputsRef.current[i] = r;
-              }}
+              ref={(r) => { inputsRef.current[i] = r; }}
               value={v}
               onChangeText={(t) => setDigit(i, t)}
               onKeyPress={({ nativeEvent }) => onKeyPress(i, nativeEvent.key)}
