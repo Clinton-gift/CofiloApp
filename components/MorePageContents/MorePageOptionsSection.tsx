@@ -72,7 +72,7 @@ function Row({
   label,
   onPress,
   labelColor = DARK,
-  chevronTint = '#9AA3AE',
+  chevronTint = '#314158',
   leftTint = DARK,
 }: {
   leftIcon: any;
