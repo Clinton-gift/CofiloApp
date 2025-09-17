@@ -90,6 +90,6 @@ const styles = StyleSheet.create({
   sumRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingVertical: 6 },
   sumLabel: { fontFamily: 'ClashGrotesk', fontSize: 16, color: MUTED },
   sumValue: { fontFamily: 'ClashGrotesk', fontSize: 16, color: MUTED },
-  cta: { backgroundColor: BLUE, borderRadius: 22, height: 56, alignItems: 'center', justifyContent: 'center' },
+  cta: { backgroundColor: BLUE, borderRadius: 16, height: 54, alignItems: 'center', justifyContent: 'center' },
   ctaTxt: { color: '#fff', fontFamily: 'ClashGrotesk', fontSize: 18, fontWeight: '700' },
 });

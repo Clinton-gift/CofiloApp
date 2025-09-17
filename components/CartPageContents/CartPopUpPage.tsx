@@ -38,7 +38,7 @@ export default function CartPopUpPage({
         {/* CartUpPageAccountOptionsSection */}
         <CartUpPageAccountOptionsSection
           onCreateAccount={onProceed}
-          onLogin={onLogin ?? onClose}
+          onLogin={onProceed}
         />
       </View>
     </Modal>

@@ -7,7 +7,7 @@ const BLUE = '#2B7FFF';
 
 type Props = {
   onCreateAccount?: () => void; // optional extra side-effect
-  onLogin?: () => void;
+  onLogin?: () => void;         // optional extra side-effect
 };
 
 export default function CartUpPageAccountOptionsSection({
@@ -17,13 +17,18 @@ export default function CartUpPageAccountOptionsSection({
   const router = useRouter();
 
   const handleCreate = () => {
-    onCreateAccount?.();
-    router.push('/signup' as const);
+    onCreateAccount?.(); // call optional callback
+    router.push('/signup'); // navigate to signup page
+  };
+
+  const handleLogin = () => {
+    onLogin?.();           // call optional callback
+    router.push('/logIn'); // navigate to login page
   };
 
   return (
     <View style={styles.wrap}>
-      {/* CreateAccountSection */}
+      {/* Create Account Section */}
       <Pressable
         style={styles.primaryBtn}
         onPress={handleCreate}
@@ -32,10 +37,10 @@ export default function CartUpPageAccountOptionsSection({
         <Text style={styles.primaryTxt}>Create your account</Text>
       </Pressable>
 
-      {/* HaveAnAccountSection */}
+      {/* Already a member Section */}
       <Pressable
         style={styles.secondaryBtn}
-        onPress={onLogin}
+        onPress={handleLogin}
         android_ripple={{ color: 'rgba(255,255,255,0.1)' }}
       >
         <Text style={styles.secondaryTxt}>Already a member? Log In</Text>
@@ -47,8 +52,8 @@ export default function CartUpPageAccountOptionsSection({
 const styles = StyleSheet.create({
   wrap: { marginTop: 18, marginBottom: 4 },
   primaryBtn: {
-    height: 56,
-    borderRadius: 22,
+    height: 52,
+    borderRadius: 16,
     backgroundColor: BLUE,
     alignItems: 'center',
     justifyContent: 'center',
@@ -61,8 +66,8 @@ const styles = StyleSheet.create({
   },
   secondaryBtn: {
     marginTop: 12,
-    height: 56,
-    borderRadius: 22,
+    height: 52,
+    borderRadius: 16,
     backgroundColor: DARK,
     alignItems: 'center',
     justifyContent: 'center',
