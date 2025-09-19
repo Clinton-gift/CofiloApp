@@ -1,8 +1,8 @@
 // components/CartPageContents/CartPageHeadingSection.tsx
-import React from 'react';
-import { View, Text, StyleSheet, Pressable, Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
-import { useRouter } from 'expo-router';
+import React from 'react';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 
 const WHITE = '#FFFFFF';
 const DARK = '#0F172B';
@@ -24,14 +24,15 @@ export default function CartPageHeadingSection({
   titleTopOffset = 0,
   buttonTopOffset = 0,
 }: Props) {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
   const backTop = (headerHeight - BACK_SIZE) / 2 + buttonTopOffset;
 
   return (
     <View style={[styles.headerBar, { paddingTop: topInset }]}>
       <View style={[styles.headerInner, { height: headerHeight }]}>
         <Pressable
-          onPress={() => router.replace('/amazon')} // go to AmazonPage
+          onPress={() => navigation.navigate('amazon')} // go to AmazonPage
           style={[styles.backBtn, { top: backTop }]}
           android_ripple={{ color: 'rgba(0,0,0,0.06)', borderless: true }}
         >

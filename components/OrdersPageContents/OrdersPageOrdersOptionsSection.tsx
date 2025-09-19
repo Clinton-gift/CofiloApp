@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
-import { useRouter } from 'expo-router';
+import React from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 const BG = '#F8FAFC';
 const CARD = '#FFFFFF';
@@ -35,7 +35,8 @@ const DATA: Row[] = [
 type Props = { bottomSpacer?: number };
 
 export default function OrdersPageOrdersOptionsSection({ bottomSpacer = 8 }: Props) {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
 
   return (
     <View style={styles.content}>
@@ -43,7 +44,7 @@ export default function OrdersPageOrdersOptionsSection({ bottomSpacer = 8 }: Pro
         <Pressable
           key={`${row.brand}-${idx}`}
           style={({ pressed }) => [styles.item, pressed && styles.itemPressed]}
-          onPress={() => router.push('/orderdetails' as const)}
+          onPress={() => navigation.navigate('orderdetails' as const)}
           android_ripple={{ color: 'rgba(0,0,0,0.06)' }}
           accessibilityRole="button"
           accessibilityLabel={`${row.brand} ${row.code}`}

@@ -1,6 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { View, Pressable, Text, StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 const DARK = '#0F172B';
 const BLUE = '#2B7FFF';
@@ -14,16 +14,17 @@ export default function CartUpPageAccountOptionsSection({
   onCreateAccount,
   onLogin,
 }: Props) {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
 
   const handleCreate = () => {
     onCreateAccount?.(); // call optional callback
-    router.push('/signup'); // navigate to signup page
+    navigation.navigate('signup'); // navigate to signup page
   };
 
   const handleLogin = () => {
     onLogin?.();           // call optional callback
-    router.push('/logIn'); // navigate to login page
+    navigation.navigate('logIn'); // navigate to login page
   };
 
   return (

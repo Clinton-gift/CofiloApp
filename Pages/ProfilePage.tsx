@@ -1,17 +1,16 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useMemo, useState } from "react";
-import { View, Keyboard, Platform } from "react-native";
-import { useRouter } from "expo-router";
+import { Keyboard, Platform, useWindowDimensions, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useWindowDimensions } from "react-native";
-
-import ProfilePageHeadingSection from "../components/ProfilePageContents/ProfilePageHeadingSection";
 import ProfilePageDetailsSection from "../components/ProfilePageContents/ProfilePageDetailsSection";
+import ProfilePageHeadingSection from "../components/ProfilePageContents/ProfilePageHeadingSection";
 import ProfilePageSaveButton from "../components/ProfilePageContents/ProfilePageSaveButton";
 
 const BG = "#F8FAFC";
 
 export default function ProfilePage() {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const MAX_FORM_WIDTH = Math.min(560, width - 40);
@@ -41,12 +40,12 @@ export default function ProfilePage() {
   const onSave = () => {
     if (!allFilled) return;
     // TODO: hook API if needed
-    router.back();
+    navigation.goBack();
   };
 
   return (
     <View style={{ flex: 1, backgroundColor: BG }}>
-      <ProfilePageHeadingSection title="Profile" onBack={() => router.back()} />
+      <ProfilePageHeadingSection title="Profile" onBack={() => navigation.goBack()} />
 
       <ProfilePageDetailsSection
         MAX_FORM_WIDTH={MAX_FORM_WIDTH}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native';
-import { useRouter } from 'expo-router';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useNavigation } from '@react-navigation/native';
 import AmazonPageHeadingSection from '../components/AmazonPageContents/AmazonPageHeadingSection';
 import AmazonPageProductsSection from '../components/AmazonPageContents/AmazonPageProductsSection';
 import AmazonPageTabsSection, { Tool } from '../components/AmazonPageContents/AmazonPageTabsSection';
@@ -10,7 +10,8 @@ import AmazonPageTabsSection, { Tool } from '../components/AmazonPageContents/Am
 const BG = '#FFFFFF';
 
 export default function AmazonePage() {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
 
   const [active, setActive] = useState<Tool>('home');
@@ -46,7 +47,7 @@ export default function AmazonePage() {
     if (key === 'cart') {
       if (cartCount > 0) {
         setActive('cart');
-        router.push('/cart' as const);
+        navigation.navigate('cart' as const);
       }
       return;
     }
@@ -56,7 +57,7 @@ export default function AmazonePage() {
 
   return (
     <SafeAreaView style={styles.safe}>
-      <AmazonPageHeadingSection onClose={() => router.back()} />
+      <AmazonPageHeadingSection onClose={() => navigation.goBack()} />
 
       <AmazonPageProductsSection
         view={view}

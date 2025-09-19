@@ -1,17 +1,19 @@
+import { useNavigation } from '@react-navigation/native';
+import { useLocalSearchParams } from "expo-router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { View, StyleSheet, Platform, Keyboard, ScrollView, TextInput } from "react-native";
-import { useRouter, useLocalSearchParams } from "expo-router";
+import { Keyboard, Platform, ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-import VerificationPageHeadingSection from "../components/VerificationPage/VerificationPageHeadingSection";
 import VerificationPageCodeSection from "../components/VerificationPage/VerificationPageCodeSection";
+import VerificationPageHeadingSection from "../components/VerificationPage/VerificationPageHeadingSection";
 import VerificationPageVerifySection from "../components/VerificationPage/VerificationPageVerifySection ";
 
 const BG = "#F8FAFC";
 const START_SECONDS = 30;
 
 export default function VerificationPage() {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const { phone: phoneParam } = useLocalSearchParams<{ phone?: string }>();
 
@@ -60,7 +62,7 @@ export default function VerificationPage() {
     }
 
     // Navigate to CartPage and trigger popup
-    router.push({
+    navigation.navigate({
   pathname: "/cart",
   params: { showPopup: "true" },
 });
@@ -78,7 +80,7 @@ export default function VerificationPage() {
     <View style={{ flex: 1, backgroundColor: BG }}>
       <VerificationPageHeadingSection
         insets={insets}
-        router={router}
+        router={navigation}
         phoneDisplay={phoneDisplay}
       />
 

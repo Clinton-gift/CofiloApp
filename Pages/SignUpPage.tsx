@@ -1,23 +1,22 @@
 // Pages/SignUpPage.tsx
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useMemo, useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Modal,
-  Pressable,
-  useWindowDimensions,
   Keyboard,
+  Modal,
   Platform,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
 } from "react-native";
-import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Ionicons } from "@expo/vector-icons";
 
+import SignUpPageContinueSection from "../components/SignUpPageContents/SignUpPageContinueSection";
 import SignUpPageHeadingSection from "../components/SignUpPageContents/SignUpPageHeadingSection";
 import SignUpPageInPutsSection from "../components/SignUpPageContents/SignUpPageInPutsSection";
-import SignUpPageContinueSection from "../components/SignUpPageContents/SignUpPageContinueSection";
 
 const BG = "#F8FAFC";
 const WHITE = "#FFFFFF";
@@ -35,7 +34,8 @@ const BACK_SIZE = 56;
 export type PickerKind = "region" | "city" | "pickup" | null;
 
 export default function SignUpPage() {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const MAX_FORM_WIDTH = Math.min(560, width - 40);
@@ -108,7 +108,7 @@ export default function SignUpPage() {
       // next step (kept no-op)
       console.log({ phone, firstName, lastName, region, city, pickup });
       // inside handleContinue (after validation passes)
-      router.push({ pathname: "/verificationPage", params: { phone } });
+      navigation.navigate({ pathname: "/verificationPage", params: { phone } });
 
     }
   };
@@ -126,7 +126,7 @@ export default function SignUpPage() {
       <SignUpPageHeadingSection
         topInset={insets.top}
         maxFormWidth={MAX_FORM_WIDTH}
-        onBack={() => router.back()}
+        onBack={() => navigation.goBack()}
         onLayout={(h) => setHeaderH(h)}
       />
 

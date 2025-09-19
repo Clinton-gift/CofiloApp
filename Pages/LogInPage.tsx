@@ -1,16 +1,16 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useMemo, useState } from "react";
-import { View, Keyboard, Platform } from "react-native";
-import { useRouter } from "expo-router";
+import { Keyboard, Platform, useWindowDimensions, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useWindowDimensions } from "react-native";
 
-import LogInPageTopSection from "../components/LogInPageContents/LogInPageTopSection";
 import LogInPageContinueSection from "../components/LogInPageContents/LogInPageContinueSection";
+import LogInPageTopSection from "../components/LogInPageContents/LogInPageTopSection";
 
 const BG = "#F8FAFC";
 
 export default function LoginPage() {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const { width } = useWindowDimensions();
   const MAX_FORM_WIDTH = Math.min(560, width - 40);
@@ -42,7 +42,7 @@ export default function LoginPage() {
   const onContinue = () => {
     setTriedContinue(true);
     if (isPhoneEmpty) return;
-    router.push({ pathname: "/verificationPage", params: { phone } });
+    navigation.navigate({ pathname: "/verificationPage", params: { phone } });
   };
 
   return (
@@ -56,7 +56,7 @@ export default function LoginPage() {
         phone={phone}
         setPhone={setPhone}
         showPhoneError={showPhoneError}
-        onBack={() => router.back()}
+        onBack={() => navigation.goBack()}
       />
 
       <LogInPageContinueSection

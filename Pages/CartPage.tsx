@@ -7,11 +7,13 @@ import CartPageHeadingSection from '../components/CartPageContents/CartPageHeadi
 import CartPageProductDetailsSection from '../components/CartPageContents/CartPageProductDetailsSection';
 import CartPagePaySection from '../components/CartPageContents/CartPagePaySection';
 import CartCheckOutPopUpPage from '../components/CartPageContents/CartCheckOutPopUpPage';
+import { useNavigation } from '@react-navigation/native';
 
 const BG = '#F8FAFC';
 
 export default function CartPage() {
-  const router = useRouter();
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
   const { showPopup } = useLocalSearchParams<{ showPopup?: string }>();
 

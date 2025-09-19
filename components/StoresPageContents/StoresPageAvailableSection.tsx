@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
-import { useRouter } from 'expo-router';
+import React from 'react';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 const DARK = '#0F172B';
 const TILE = 60;
@@ -13,8 +13,9 @@ type Props = {
 };
 
 export default function StoresPageAvailableSection({ edgeOffset = 10 }: Props) {
-  const router = useRouter();
-  const goAmazon = () => router.push('/amazon' as const);
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
+  const goAmazon = () => navigation.navigate('amazon' as const);
 
   return (
     <View style={[styles.featureRow, { paddingLeft: edgeOffset }]}>

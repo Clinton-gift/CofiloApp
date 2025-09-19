@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Pressable, Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Image } from 'expo-image';
-import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import PopUpPage from './PopUpPage/PopUpPage';
 
 const BG = '#F8FAFC';
@@ -12,7 +12,8 @@ const RED = '#EF4444';
 type Props = { bottomSpacer?: number };
 
 export default function MorePageOptionsSection({ bottomSpacer = 12 }: Props) {
-  const router = useRouter();
+  // c
+  const navigation = useNavigation<any>();
   const [showLang, setShowLang] = useState(false);
   const [lang, setLang] = useState<'fr' | 'en'>('en');
 
@@ -21,13 +22,13 @@ export default function MorePageOptionsSection({ bottomSpacer = 12 }: Props) {
       <Row
         leftIcon={require('../../assets/images/Profile.svg')}
         label="Profile"
-        onPress={() => router.push('/profile' as const)}
+        onPress={() => navigation.navigate('profile' as const)}
       />
 
       <Row
         leftIcon={require('../../assets/images/Profile.svg')}
         label="Transactions"
-        onPress={() => router.push('/transactions' as const)}
+        onPress={() => navigation.navigate('transactions' as const)}
       />
 
       <Row
@@ -39,7 +40,7 @@ export default function MorePageOptionsSection({ bottomSpacer = 12 }: Props) {
       <Row
         leftIcon={require('../../assets/images/Settings.svg')}
         label="Settings"
-        onPress={() => router.push('/settings' as const)}
+        onPress={() => navigation.navigate('settings' as const)}
       />
 
       {/* Log out – red icon, label and chevron; no action */}

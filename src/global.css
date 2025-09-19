@@ -1,0 +1,4 @@
+/* src/global.css (or any imported css) */
+html, body, #root, #root > div { height: 100%; }
+body { margin: 0; }
+* { box-sizing: border-box; }

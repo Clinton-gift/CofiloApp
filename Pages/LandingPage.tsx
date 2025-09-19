@@ -2,6 +2,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { View, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
 
 import LandingPageImageSection from '../components/LandingPage/LandingPageImageSection';
 import LandingPageHeadingSection from '../components/LandingPage/LandingPageHeadingSection';
@@ -10,8 +11,9 @@ import LandingPageButtonSection from '../components/LandingPage/LandingPageButto
 const BLUE = '#2B7FFF';
 
 export default function LandingPage() {
-  const router = useRouter();
-  const goToSecond = () => router.push('/home' as const);
+  // const router = useRouter();
+  const navigation = useNavigation<any>();
+  const goToSecond = () => navigation.navigate("home");
 
   return (
     <SafeAreaView style={styles.container}>
