@@ -58,6 +58,7 @@
     "@types/react": "~19.0.10",
     "assert": "^2.1.0",
     "buffer": "^6.0.3",
+    "copy-webpack-plugin": "^13.0.1",
     "crypto-browserify": "^3.12.1",
     "eslint": "^9.25.0",
     "eslint-config-expo": "~9.2.0",
