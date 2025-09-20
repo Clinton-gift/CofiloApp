@@ -49,8 +49,7 @@
     "react-native-svg": "^15.11.2",
     "react-native-svg-web": "^1.0.9",
     "react-native-web": "~0.20.0",
-    "react-native-webview": "13.13.5",
-    "undefined": " "
+    "react-native-webview": "13.13.5"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -73,8 +72,7 @@
     "workbox-core": "^7.3.0",
     "workbox-precaching": "^7.3.0",
     "workbox-routing": "^7.3.0",
-    "workbox-strategies": "^7.3.0",
-    "workbox-webpack-plugin": "^7.3.0"
+    "workbox-strategies": "^7.3.0"
   },
   "private": true
 }

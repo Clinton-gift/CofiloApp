@@ -1,5 +1,5 @@
 // index.js
-import 'process/browser';
+// import 'process/browser';
 import './src/global.css';
 import { registerRootComponent } from 'expo';
 import React, { useEffect, useRef, useState } from 'react';
