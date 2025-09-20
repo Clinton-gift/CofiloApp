@@ -49,7 +49,8 @@ module.exports = async (env, argv) => {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: path.resolve(__dirname, 'manifest.json'), to: config.output.path },
+        // { from: path.resolve(__dirname, 'manifest.json'), to: config.output.path },
+        { from: path.resolve(__dirname, 'app.webmanifest'), to: config.output.path },
         { from: path.resolve(__dirname, 'service-worker.js'), to: config.output.path },
         { from: path.resolve(__dirname, 'assets'), to: path.join(config.output.path, 'assets') },
       ],
